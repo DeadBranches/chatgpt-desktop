@@ -66,12 +66,11 @@ function createWindow () {
       })
     } }))
 
-    // Add "Copy Act" option
     menu.append(
       new MenuItem({
         label: 'Copy Act',
         click: showActDialog,
-      })
+    })
     );
 
 
@@ -90,45 +89,24 @@ app.whenReady().then(() => {
 })
 
 
-// async function showActDialog() {
-//   const promptsData = await fs.promises.readFile('prompts.json', 'utf-8');
-//   const prompts = JSON.parse(promptsData);
-//   const acts = prompts.map((prompt) => prompt.act);
 async function showActDialog() {
   const promptsData = await fs.promises.readFile('prompts.json', 'utf-8');
   const prompts = JSON.parse(promptsData);
-  const acts = prompts.map((prompt) => ({ label: prompt.act, value: prompt.act, prompt: prompt.prompt }));
 
-  const dropdownWindow = new BrowserWindow({
-    width: 300,
-    height: 200,
-    webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false,
-      enableRemoteModule: false,
-    },
-  });
+  const options = {
+    type: 'question',
+    buttons: prompts.map((prompt) => prompt.act),
+    title: 'Choose an act',
+    message: 'Select an act to copy to the clipboard:',
+  };
 
-  dropdownWindow.loadFile('dropdown.html');
+  const result = await dialog.showMessageBox(null, options);
+  const selectedAct = options.buttons[result.response];
 
-  // dropdownWindow.webContents.on('did-finish-load', () => {
-  //   dropdownWindow.webContents.send('acts', acts);
-  // });
-  dropdownWindow.webContents.on('did-finish-load', () => {
-    dropdownWindow.webContents.send('acts', acts);
-  });
-
-  
-  ipcMain.on('selected-act', (event, selectedAct) => {
+  if (selectedAct) {
     clipboard.writeText(selectedAct);
-    dropdownWindow.close();
-  });
-
-  dropdownWindow.on('closed', () => {
-    ipcMain.removeAllListeners('selected-act');
-  });
+  }
 }
-
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
 })
