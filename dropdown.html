@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Select Act</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #prompt-display {
+      grid-column: 3;
+      max-width: 300px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <div class="column" id="column-1"></div>
+    <div class="column" id="column-2"></div>
+    <div id="prompt-display"></div>
+  </div>
+  <script>
+    const { ipcRenderer } = require('electron');
+
+    ipcRenderer.on('acts', (event, acts) => {
+      acts.forEach((act, index) => {
+        const button = document.createElement('button');
+        button.textContent = act.label;
+        button.setAttribute('data-prompt', act.prompt);
+        button.addEventListener('mouseover', () => {
+          document.getElementById('prompt-display').textContent = act.prompt;
+        });
+        button.addEventListener('click', () => {
+          ipcRenderer.send('selected-act', act.prompt);
+        });
+
+        const columnId = index % 2 === 0 ? 'column-1' : 'column-2';
+        document.getElementById(columnId).appendChild(button);
+      });
+    });
+  </script>
+</body>
+</html>

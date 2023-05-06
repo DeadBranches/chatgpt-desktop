@@ -164,7 +164,7 @@ dist
 !.vscode/extensions.json
 !.vscode/*.code-snippets
 # Ignore local workspaces
-*.workspaces
+*.code-workspace
 
 # Local History for Visual Studio Code
 .history/

@@ -1,0 +1,20 @@
+{
+  "name": "chatgpt-desktop",
+  "version": "1.0.0",
+  "description": "Electron wrapper for OpenAI's ChatGPT",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "npm test",
+    "build": "electron-packager . chatgpt-desktop --platform=win32 --arch=x64 --icon=icon.ico --out=dist --overwrite"
+  },
+  "keywords": [
+    "chatgpt"
+  ],
+  "author": "DeadBranch",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^23.1.4",
+    "electron-packager": "^17.1.1"
+  }
+}
