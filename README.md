@@ -59,7 +59,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![ChatGPT Desktop Screen Shot](https://user-images.githubusercontent.com/56521874/236639231-cad0b13a-dec5-4a76-8990-be45be9c44d7.png)
 
 This project is an Electron wrapper for ChatGPT, allowing users to interact with the language model through a standalone desktop application. It leverages the power of Node.js and Chromium to provide a cross-platform experience.
 
