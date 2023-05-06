@@ -176,3 +176,7 @@ dist
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/git,visualstudiocode,node
+
+# Ignore messy backups
+./bkp
+./bkp/*
