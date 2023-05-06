@@ -180,3 +180,6 @@ dist
 # Ignore messy backups
 ./bkp
 ./bkp/*
+
+# Ignore messy copies
+./*- Copy*
