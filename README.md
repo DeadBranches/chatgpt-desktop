@@ -23,7 +23,8 @@
 <br />
 <div align="center">
   <a href="https://github.com/DeadBranches/chatgpt-desktop">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://user-images.githubusercontent.com/56521874/236640563-195e898d-e94c-4704-820c-3119249c440b.png" alt="Logo" width="80" height="80">
+
   </a>
 
 <h3 align="center">ChatGPT Desktop</h3>
