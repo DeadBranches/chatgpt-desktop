@@ -163,6 +163,8 @@ dist
 !.vscode/launch.json
 !.vscode/extensions.json
 !.vscode/*.code-snippets
+# Ignore local workspaces
+*.workspaces
 
 # Local History for Visual Studio Code
 .history/
@@ -183,3 +185,5 @@ bkp/*
 
 # Ignore messy copies
 *- Copy*
+
+# Ignore vscode works
