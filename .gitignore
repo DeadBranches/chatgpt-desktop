@@ -178,8 +178,8 @@ dist
 # End of https://www.toptal.com/developers/gitignore/api/git,visualstudiocode,node
 
 # Ignore messy backups
-./bkp
-./bkp/*
+bkp/
+bkp/*
 
 # Ignore messy copies
-./*- Copy*
+*- Copy*
